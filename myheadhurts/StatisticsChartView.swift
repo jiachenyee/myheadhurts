@@ -23,26 +23,37 @@ struct StatisticsChartView: View {
     }
     
     var body: some View {
-        VStack {
-            Text(chartType?.rawValue ?? "headaches")
-                .font(.title2)
-                .fontWeight(.bold)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
-            if let chartShape = getChartShape() {
-                Chart {
-                    ForEach(chartShape, id: \.day) { shape in
-                        BarMark(
-                            x: .value("Day", shape.day),
-                            y: .value("\(chartType?.rawValue ?? "Headache") Count", shape.count)
-                        )
-                    }
+        NavigationLink {
+            StatisticsCalendarView(chartType: chartType)
+        } label: {
+            VStack {
+                HStack {
+                    Text(chartType?.rawValue ?? "headaches")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundStyle(Color(.label))
+                        .font(.title2)
+                        .fontWeight(.bold)
+                    
+                    Image(systemName: "chevron.right")
+                        .foregroundStyle(Color(.secondaryLabel))
                 }
-            } else {
-                ContentUnavailableView("no data, thankfully", systemImage: "pencil.and.list.clipboard")
+                
+                if let chartShape = getChartShape() {
+                    Chart {
+                        ForEach(chartShape, id: \.day) { shape in
+                            BarMark(
+                                x: .value("Day", shape.day),
+                                y: .value("\(chartType?.rawValue ?? "Headache") Count", shape.count)
+                            )
+                        }
+                    }
+                } else {
+                    ContentUnavailableView("no data, thankfully", systemImage: "pencil.and.list.clipboard")
+                        .foregroundStyle(Color(.label))
+                }
             }
+            .padding(.bottom, 48)
         }
-        .padding(.bottom, 48)
     }
     
     func getChartShape() -> [ChartShape]? {

@@ -12,7 +12,7 @@ struct HeadacheDetailView: View {
     let headache: Headache?
     
     @State private var date: Date = .now
-    @State private var severity: Headache.HeadacheSeverity = .mild
+    @State private var severity: Headache.HeadacheSeverity = .present
     
     @State private var notes: String = ""
     @State private var nausea: Bool = false

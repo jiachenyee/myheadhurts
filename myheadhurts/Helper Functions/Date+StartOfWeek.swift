@@ -16,6 +16,10 @@ extension Date {
         Calendar.current.startOfDay(for: self)
     }
     
+    var dayOfWeek: Int {
+        Calendar.current.component(.weekday, from: self) - 1
+    }
+    
     var formattedDateOnly: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM d"
