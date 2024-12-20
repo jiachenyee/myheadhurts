@@ -17,7 +17,7 @@ struct StatisticsView: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(spacing: 16) {
             VStack {
                 TabView {
                     StatisticsChartView(thisWeekHeadache: thisWeekHeadache)
