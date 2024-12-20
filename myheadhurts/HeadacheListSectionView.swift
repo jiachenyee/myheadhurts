@@ -13,6 +13,7 @@ struct HeadacheListSectionView: View {
     @Query(sort: \Headache.date, order: .reverse) var headaches: [Headache]
     
     @Namespace private var namespace
+    @Environment(\.modelContext) private var modelContext
     
     let startOfDay: Date
     
@@ -69,6 +70,14 @@ struct HeadacheListSectionView: View {
                     .background(.thinMaterial)
                     .clipShape(.rect(cornerRadius: 8))
                     .shadow(color: .black.opacity(0.1), radius: 8)
+                    .contextMenu {
+                        Button(role: .destructive) {
+                            modelContext.delete(headache)
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
+
+                    }
                 }
             }
         }

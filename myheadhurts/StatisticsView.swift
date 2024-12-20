@@ -30,7 +30,7 @@ struct StatisticsView: View {
                 .frame(height: 250)
                 .tint(.accentColor)
                 .tabViewStyle(.page)
-                .padding([.horizontal, .top])
+                .padding([.top])
             }
             .frame(maxWidth: .infinity)
             .background(Material.thinMaterial)

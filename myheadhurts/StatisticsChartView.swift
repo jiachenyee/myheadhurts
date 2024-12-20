@@ -53,6 +53,7 @@ struct StatisticsChartView: View {
                 }
             }
             .padding(.bottom, 48)
+            .padding(.horizontal)
         }
     }
     
