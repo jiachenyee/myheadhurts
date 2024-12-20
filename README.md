@@ -11,9 +11,9 @@ pardon the poor code quality, im literally writing this app with a headache
   - [ ] entries from the app will be reflected in the health app and vice-versa
 - [ ] data vis
   - [ ] maybe a cool headache heatmap like github, that sounds like a headache to implement
-  - [ ] trends, like oh no more severe headaches this wk than last
+  - [x] trends, like oh no more severe headaches this wk than last
 - [ ] usability improvements
-  - [ ] support for control center action to quickly headache
+  - [x] support for control center action to quickly headache
   - [ ] support for siri shortcuts so you can use the action button to log headache
   - [ ] support for widgets - maybe it can display the home screen stats
 
