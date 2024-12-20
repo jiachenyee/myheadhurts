@@ -6,81 +6,58 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
     
     @State private var isNewEntrySheetPresented = false
     
-    @State private var headacheManager = HeadacheManager()
+    @Query var headaches: [Headache]
+    
+    @Environment(\.modelContext) var modelContext
     
     var body: some View {
         NavigationStack {
-            List {
-                Section {
-                    HStack(spacing: 16) {
-                        VStack {
-                            Text("\(headacheManager.headaches.count)")
-                                .font(.largeTitle)
-                                .fontWeight(.bold)
-                                .monospacedDigit()
+            Group {
+                if headaches.isEmpty {
+                    ContentUnavailableView("no headaches to show", systemImage: "face.smiling")
+                } else {
+                    ScrollView {
+                        LazyVStack {
+                            StatisticsView()
                             
-                            Text("total")
+                            HeadacheListView()
                         }
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background()
-                        .clipShape(.rect(cornerRadius: 8))
-                        
-                        VStack {
-                            let thisWeekHeadache = headacheManager.headaches.filter { $0.date > .now.startOfWeek }
-                            
-                            Text("\(thisWeekHeadache.count)")
-                                .font(.largeTitle)
-                                .fontWeight(.bold)
-                                .monospacedDigit()
-                            
-                            Text("this week")
-                        }
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background()
-                        .clipShape(.rect(cornerRadius: 8))
                     }
-                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                    .listRowBackground(Color.clear)
                 }
-                
-                Section("episodes") {
-                    HeadacheListView(headaches: $headacheManager.headaches)
-                }
-                
             }
+            .overlay(alignment: .bottom) {
+                Button {
+                    isNewEntrySheetPresented = true
+                } label: {
+                    Image(systemName: "plus")
+                        .imageScale(.large)
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .foregroundStyle(.white)
+                        .padding(24)
+                        .background(Color.accentColor)
+                        .clipShape(.circle)
+                }
+            }
+
             .navigationTitle("my head hurts")
             .sheet(isPresented: $isNewEntrySheetPresented) {
-                LogHeadacheView { newHeadache in
-                    headacheManager.headaches.append(newHeadache)
+                NavigationStack {
+                    HeadacheDetailView(headache: nil)
                 }
             }
+            .background(LinearGradient(colors: [.clear, .accentColor.opacity(0.3)], startPoint: .top, endPoint: .bottom),
+                        ignoresSafeAreaEdges: .all)
         }
-        .overlay(alignment: .bottom) {
-            Button {
-                isNewEntrySheetPresented = true
-            } label: {
-                Image(systemName: "plus.circle.fill")
-                    .imageScale(.large)
-                    .font(.system(size: 60))
-            }
-        }
-        .environment(headacheManager)
     }
 }
 
 #Preview {
     ContentView()
-}
-
-extension Date {
-    var startOfWeek: Date {
-        Calendar.current.date(from: Calendar.current.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))!
-    }
 }

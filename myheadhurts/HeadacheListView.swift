@@ -6,34 +6,51 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct HeadacheListView: View {
     
-    @Binding var headaches: [HeadacheEntry]
+    @Query(sort: \Headache.date, order: .reverse) var headaches: [Headache]
+    
+    @Environment(\.modelContext) private var modelContext
+    
+    var dates: [Date] {
+        getAllDates()
+    }
     
     var body: some View {
-        if headaches.isEmpty {
-            ContentUnavailableView("no headaches to show", systemImage: "face.smiling")
-        } else {
-            ForEach($headaches, editActions: .delete) { $headache in
-                NavigationLink(destination: HeadacheDetailView(headache: $headache)) {
-                    
-                    VStack(alignment: .leading) {
-                        Text(headache.date.formatted(date: .abbreviated, time: .shortened).lowercased())
-                            .font(.headline)
-                        Text(headache.severity.rawValue)
-                            .foregroundStyle(.secondary)
-                    }
-                }
+        VStack(alignment: .leading) {
+            ForEach(dates, id: \.self) { date in
+                HeadacheListSectionView(startOfDay: date)
+                    .padding(.top, 16)
+            }
+//            .onDelete { indexSet in
+//                for index in indexSet {
+//                    modelContext.delete(headaches[index])
+//                }
+//            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal)
+    }
+    
+    func getAllDates() -> [Date] {
+        var dates = [Date]()
+        
+        // this is only possible because headaches is sorted
+        for headache in headaches {
+            let sod = headache.date.startOfDay
+            if dates.last != sod {
+                dates.append(sod)
             }
         }
+        
+        return dates
     }
 }
 
 #Preview {
-    HeadacheListView(headaches: .constant([.example, .example, .example]))
+    HeadacheListView()
 }
 
-#Preview {
-    HeadacheListView(headaches: .constant([]))
-}
+
