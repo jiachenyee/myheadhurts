@@ -6,14 +6,91 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		32FB86CB2D15C46F00A624DE /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32FB86CA2D15C46F00A624DE /* WidgetKit.framework */; };
+		32FB86CD2D15C46F00A624DE /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32FB86CC2D15C46F00A624DE /* SwiftUI.framework */; };
+		32FB86DC2D15C47100A624DE /* EntryRecordingExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 32FB86C82D15C46F00A624DE /* EntryRecordingExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		32FB86DA2D15C47100A624DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 32FB86882D12755800A624DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 32FB86C72D15C46F00A624DE;
+			remoteInfo = EntryRecordingExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		32FB86E12D15C47100A624DE /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				32FB86DC2D15C47100A624DE /* EntryRecordingExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		32FB86902D12755800A624DE /* myheadhurts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myheadhurts.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		32FB86C82D15C46F00A624DE /* EntryRecordingExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EntryRecordingExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		32FB86CA2D15C46F00A624DE /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		32FB86CC2D15C46F00A624DE /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		32FB86DD2D15C47100A624DE /* Exceptions for "EntryRecording" folder in "EntryRecordingExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 32FB86C72D15C46F00A624DE /* EntryRecordingExtension */;
+		};
+		32FB86E52D15C95E00A624DE /* Exceptions for "myheadhurts" folder in "EntryRecordingExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ViewModel.swift,
+			);
+			target = 32FB86C72D15C46F00A624DE /* EntryRecordingExtension */;
+		};
+		32FB86E72D15CAAF00A624DE /* Exceptions for "myheadhurts" folder in "myheadhurts" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 32FB868F2D12755800A624DE /* myheadhurts */;
+		};
+		32FB86EB2D15CCD000A624DE /* Exceptions for "EntryRecording" folder in "myheadhurts" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				LogEntryIntent.swift,
+			);
+			target = 32FB868F2D12755800A624DE /* myheadhurts */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		32FB86922D12755800A624DE /* myheadhurts */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				32FB86E72D15CAAF00A624DE /* Exceptions for "myheadhurts" folder in "myheadhurts" target */,
+				32FB86E52D15C95E00A624DE /* Exceptions for "myheadhurts" folder in "EntryRecordingExtension" target */,
+			);
 			path = myheadhurts;
+			sourceTree = "<group>";
+		};
+		32FB86CE2D15C46F00A624DE /* EntryRecording */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				32FB86EB2D15CCD000A624DE /* Exceptions for "EntryRecording" folder in "myheadhurts" target */,
+				32FB86DD2D15C47100A624DE /* Exceptions for "EntryRecording" folder in "EntryRecordingExtension" target */,
+			);
+			path = EntryRecording;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,6 +103,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		32FB86C52D15C46F00A624DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32FB86CD2D15C46F00A624DE /* SwiftUI.framework in Frameworks */,
+				32FB86CB2D15C46F00A624DE /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -33,6 +119,8 @@
 			isa = PBXGroup;
 			children = (
 				32FB86922D12755800A624DE /* myheadhurts */,
+				32FB86CE2D15C46F00A624DE /* EntryRecording */,
+				32FB86C92D15C46F00A624DE /* Frameworks */,
 				32FB86912D12755800A624DE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,8 +129,18 @@
 			isa = PBXGroup;
 			children = (
 				32FB86902D12755800A624DE /* myheadhurts.app */,
+				32FB86C82D15C46F00A624DE /* EntryRecordingExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		32FB86C92D15C46F00A624DE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				32FB86CA2D15C46F00A624DE /* WidgetKit.framework */,
+				32FB86CC2D15C46F00A624DE /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -55,10 +153,12 @@
 				32FB868C2D12755800A624DE /* Sources */,
 				32FB868D2D12755800A624DE /* Frameworks */,
 				32FB868E2D12755800A624DE /* Resources */,
+				32FB86E12D15C47100A624DE /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				32FB86DB2D15C47100A624DE /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				32FB86922D12755800A624DE /* myheadhurts */,
@@ -69,6 +169,28 @@
 			productName = myheadhurts;
 			productReference = 32FB86902D12755800A624DE /* myheadhurts.app */;
 			productType = "com.apple.product-type.application";
+		};
+		32FB86C72D15C46F00A624DE /* EntryRecordingExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32FB86DE2D15C47100A624DE /* Build configuration list for PBXNativeTarget "EntryRecordingExtension" */;
+			buildPhases = (
+				32FB86C42D15C46F00A624DE /* Sources */,
+				32FB86C52D15C46F00A624DE /* Frameworks */,
+				32FB86C62D15C46F00A624DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				32FB86CE2D15C46F00A624DE /* EntryRecording */,
+			);
+			name = EntryRecordingExtension;
+			packageProductDependencies = (
+			);
+			productName = EntryRecordingExtension;
+			productReference = 32FB86C82D15C46F00A624DE /* EntryRecordingExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -81,6 +203,9 @@
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					32FB868F2D12755800A624DE = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					32FB86C72D15C46F00A624DE = {
 						CreatedOnToolsVersion = 16.1;
 					};
 				};
@@ -100,12 +225,20 @@
 			projectRoot = "";
 			targets = (
 				32FB868F2D12755800A624DE /* myheadhurts */,
+				32FB86C72D15C46F00A624DE /* EntryRecordingExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		32FB868E2D12755800A624DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32FB86C62D15C46F00A624DE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +255,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		32FB86C42D15C46F00A624DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		32FB86DB2D15C47100A624DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 32FB86C72D15C46F00A624DE /* EntryRecordingExtension */;
+			targetProxy = 32FB86DA2D15C47100A624DE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		32FB869C2D12755A00A624DE /* Debug */ = {
@@ -255,6 +403,7 @@
 				DEVELOPMENT_TEAM = 9W63WN9LG4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = myheadhurts/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -284,6 +433,7 @@
 				DEVELOPMENT_TEAM = 9W63WN9LG4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = myheadhurts/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -296,6 +446,60 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.jiachen.myheadhurts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		32FB86DF2D15C47100A624DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9W63WN9LG4;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EntryRecording/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = EntryRecording;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.jiachen.myheadhurts.EntryRecording;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		32FB86E02D15C47100A624DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9W63WN9LG4;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EntryRecording/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = EntryRecording;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.jiachen.myheadhurts.EntryRecording;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -319,6 +523,15 @@
 			buildConfigurations = (
 				32FB869F2D12755A00A624DE /* Debug */,
 				32FB86A02D12755A00A624DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		32FB86DE2D15C47100A624DE /* Build configuration list for PBXNativeTarget "EntryRecordingExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32FB86DF2D15C47100A624DE /* Debug */,
+				32FB86E02D15C47100A624DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

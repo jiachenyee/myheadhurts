@@ -10,7 +10,7 @@ import SwiftData
 
 struct ContentView: View {
     
-    @State private var isNewEntrySheetPresented = false
+    @StateObject private var viewModel = ViewModel.shared
     
     @Query var headaches: [Headache]
     
@@ -25,7 +25,6 @@ struct ContentView: View {
                     ScrollView {
                         LazyVStack {
                             StatisticsView()
-                            
                             HeadacheListView()
                         }
                     }
@@ -33,7 +32,7 @@ struct ContentView: View {
             }
             .overlay(alignment: .bottom) {
                 Button {
-                    isNewEntrySheetPresented = true
+                    viewModel.isNewEntrySheetPresented = true
                 } label: {
                     Image(systemName: "plus")
                         .imageScale(.large)
@@ -45,15 +44,17 @@ struct ContentView: View {
                         .clipShape(.circle)
                 }
             }
-
             .navigationTitle("my head hurts")
-            .sheet(isPresented: $isNewEntrySheetPresented) {
+            .sheet(isPresented: $viewModel.isNewEntrySheetPresented) {
                 NavigationStack {
                     HeadacheDetailView(headache: nil)
                 }
             }
             .background(LinearGradient(colors: [.clear, .accentColor.opacity(0.3)], startPoint: .top, endPoint: .bottom),
                         ignoresSafeAreaEdges: .all)
+            .onOpenURL { url in
+                viewModel.isNewEntrySheetPresented = true
+            }
         }
     }
 }
