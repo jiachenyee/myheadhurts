@@ -60,7 +60,7 @@ struct StatisticsChartView: View {
             if let chartType, !headache.traits.contains(chartType) {
                 continue
             }
-            chartShapes[Calendar.current.component(.weekday, from: headache.date)].count += 1
+            chartShapes[Calendar.current.component(.weekday, from: headache.date) - 1].count += 1
         }
         
         if chartShapes.allSatisfy({ $0.count == 0 }) {
