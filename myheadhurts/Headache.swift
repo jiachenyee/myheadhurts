@@ -12,15 +12,14 @@ import HealthKit
 @Model
 class Headache: Identifiable {
     
-    @Attribute(.unique)
     var id = UUID()
     
-    var date: Date
-    var severity: HeadacheSeverity
+    var date: Date = Date.now
+    var severity: HeadacheSeverity = HeadacheSeverity.present
     var notes: String = ""
     
-    var nausea: Bool
-    var vomiting: Bool
+    var nausea: Bool = false
+    var vomiting: Bool = false
     
     var lightheadedness: Bool = false
     var dizziness: Bool = false
