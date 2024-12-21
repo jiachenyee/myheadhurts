@@ -51,13 +51,6 @@
 			);
 			target = 32FB86C72D15C46F00A624DE /* EntryRecordingExtension */;
 		};
-		32FB86E52D15C95E00A624DE /* Exceptions for "myheadhurts" folder in "EntryRecordingExtension" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				ViewModel.swift,
-			);
-			target = 32FB86C72D15C46F00A624DE /* EntryRecordingExtension */;
-		};
 		32FB86E72D15CAAF00A624DE /* Exceptions for "myheadhurts" folder in "myheadhurts" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -72,6 +65,14 @@
 			);
 			target = 32FB868F2D12755800A624DE /* myheadhurts */;
 		};
+		32FB86F72D16A50700A624DE /* Exceptions for "myheadhurts" folder in "EntryRecordingExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Headache.swift,
+				ViewModel.swift,
+			);
+			target = 32FB86C72D15C46F00A624DE /* EntryRecordingExtension */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -79,7 +80,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				32FB86E72D15CAAF00A624DE /* Exceptions for "myheadhurts" folder in "myheadhurts" target */,
-				32FB86E52D15C95E00A624DE /* Exceptions for "myheadhurts" folder in "EntryRecordingExtension" target */,
+				32FB86F72D16A50700A624DE /* Exceptions for "myheadhurts" folder in "EntryRecordingExtension" target */,
 			);
 			path = myheadhurts;
 			sourceTree = "<group>";
@@ -397,6 +398,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = myheadhurts/myheadhurts.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"myheadhurts/Preview Content\"";
@@ -404,6 +406,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = myheadhurts/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Store headache, nausea, vomiting, light-headedness, dizziness, and collapsed information";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Store headache, nausea, vomiting, light-headedness, dizziness, and collapsed information";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -427,6 +431,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = myheadhurts/myheadhurts.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"myheadhurts/Preview Content\"";
@@ -434,6 +439,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = myheadhurts/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Store headache, nausea, vomiting, light-headedness, dizziness, and collapsed information";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Store headache, nausea, vomiting, light-headedness, dizziness, and collapsed information";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

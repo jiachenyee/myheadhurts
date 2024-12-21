@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HeadacheDetailView: View {
     
+    @EnvironmentObject private var viewModel: ViewModel
+    
     let headache: Headache?
     
     @State private var date: Date = .now
@@ -28,7 +30,7 @@ struct HeadacheDetailView: View {
     var body: some View {
         Form {
             Section {
-                DatePicker("when", selection: $date)
+                DatePicker("when", selection: $date, in: ...Date.now)
                 
                 Picker("severity", selection: $severity) {
                     ForEach(Headache.HeadacheSeverity.allCases, id: \.self) { severity in
@@ -114,15 +116,22 @@ struct HeadacheDetailView: View {
     func createHeadache() {
         guard headache == nil else { return }
         
-        modelContext.insert(Headache(date: date,
-                                     severity: severity,
-                                     notes: notes,
-                                     nausea: nausea,
-                                     vomiting: vomiting,
-                                     lightheadedness: lightheadedness,
-                                     dizziness: dizziness,
-                                     collapsed: collapsed))
+        let newHeadache = Headache(date: date,
+                                   severity: severity,
+                                   notes: notes,
+                                   nausea: nausea,
+                                   vomiting: vomiting,
+                                   lightheadedness: lightheadedness,
+                                   dizziness: dizziness,
+                                   collapsed: collapsed)
+        
+        modelContext.insert(newHeadache)
+        
         try? modelContext.save()
+        
+        Task {
+            await viewModel.createNewHealthKitRecord(for: newHeadache)
+        }
     }
 }
 

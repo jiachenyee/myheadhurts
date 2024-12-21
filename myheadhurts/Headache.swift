@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftData
+import HealthKit
 
 @Model
 class Headache: Identifiable {
@@ -24,6 +25,13 @@ class Headache: Identifiable {
     var lightheadedness: Bool = false
     var dizziness: Bool = false
     var collapsed: Bool = false
+    
+    var headacheHealthKitId: UUID? = nil
+    var nauseaHealthKitId: UUID? = nil
+    var vomitingHealthKitId: UUID? = nil
+    
+    var dizzinessHealthKitId: UUID? = nil
+    var faintingHealthKitId: UUID? = nil
     
     var traits: [HeadacheTrait] {
         var traits: [HeadacheTrait] = []
@@ -48,6 +56,15 @@ class Headache: Identifiable {
         case mild
         case moderate
         case severe
+        
+        func toHealthKit() -> HKCategoryValueSeverity {
+            switch self {
+            case .present: return .unspecified
+            case .mild: return .mild
+            case .moderate: return .moderate
+            case .severe: return .severe
+            }
+        }
     }
     
     init(id: UUID = UUID(), date: Date,

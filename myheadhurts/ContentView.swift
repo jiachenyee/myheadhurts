@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import HealthKit
 
 struct ContentView: View {
     
@@ -56,6 +57,10 @@ struct ContentView: View {
                 viewModel.isNewEntrySheetPresented = true
             }
         }
+        .task {
+            await viewModel.requestAuthorization()
+        }
+        .environmentObject(viewModel)
     }
 }
 
