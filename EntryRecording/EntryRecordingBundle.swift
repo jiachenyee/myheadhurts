@@ -11,7 +11,7 @@ import SwiftUI
 @main
 struct EntryRecordingBundle: WidgetBundle {
     var body: some Widget {
-//        EntryRecording()
+        EntryRecording()
         EntryRecordingControl()
     }
 }

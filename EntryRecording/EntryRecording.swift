@@ -7,82 +7,183 @@
 
 import WidgetKit
 import SwiftUI
+import SwiftData
 
-//struct Provider: AppIntentTimelineProvider {
-//    func placeholder(in context: Context) -> SimpleEntry {
-//        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent())
-//    }
-//
-//    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-//        SimpleEntry(date: Date(), configuration: configuration)
-//    }
-//    
-//    func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
-//        var entries: [SimpleEntry] = []
-//
-//        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-//        let currentDate = Date()
-//        for hourOffset in 0 ..< 5 {
-//            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-//            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-//            entries.append(entry)
-//        }
-//
-//        return Timeline(entries: entries, policy: .atEnd)
-//    }
-//
-////    func relevances() async -> WidgetRelevances<ConfigurationAppIntent> {
-////        // Generate a list containing the contexts this widget is relevant in.
-////    }
-//}
-//
-//struct SimpleEntry: TimelineEntry {
-//    let date: Date
-//    let configuration: ConfigurationAppIntent
-//}
-//
-//struct EntryRecordingEntryView : View {
-//    var entry: Provider.Entry
-//
-//    var body: some View {
-//        VStack {
-//            Text("Time:")
-//            Text(entry.date, style: .time)
-//
-//            Text("Favorite Emoji:")
-//            Text(entry.configuration.favoriteEmoji)
-//        }
-//    }
-//}
-//
-//struct EntryRecording: Widget {
-//    let kind: String = "EntryRecording"
-//
-//    var body: some WidgetConfiguration {
-//        AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
-//            EntryRecordingEntryView(entry: entry)
-//                .containerBackground(.fill.tertiary, for: .widget)
-//        }
-//    }
-//}
-//
-//extension ConfigurationAppIntent {
-//    fileprivate static var smiley: ConfigurationAppIntent {
-//        let intent = ConfigurationAppIntent()
-//        intent.favoriteEmoji = "😀"
-//        return intent
-//    }
-//    
-//    fileprivate static var starEyes: ConfigurationAppIntent {
-//        let intent = ConfigurationAppIntent()
-//        intent.favoriteEmoji = "🤩"
-//        return intent
-//    }
-//}
-//
-//#Preview(as: .systemSmall) {
-//    EntryRecording()
-//} timeline: {
-//    SimpleEntry(date: .now, configuration: .smiley)
-//    SimpleEntry(date: .now, configuration: .starEyes)
-//}
+struct Provider: TimelineProvider {
+    
+    func placeholder(in context: Context) -> SimpleEntry {
+        SimpleEntry(date: Date())
+    }
+
+    func getSnapshot(in context: Context, completion: @escaping @Sendable (SimpleEntry) -> Void) {
+        let entry = SimpleEntry(date: Date())
+        
+        completion(entry)
+    }
+    
+    func getTimeline(in context: Context, completion: @escaping @Sendable (Timeline<SimpleEntry>) -> Void) {
+        let entries: [SimpleEntry] = [SimpleEntry(date: .now)]
+        
+        completion(Timeline(entries: entries, policy: .atEnd))
+    }
+}
+
+struct SimpleEntry: TimelineEntry {
+    let date: Date
+}
+
+struct EntryRecordingEntryView : View {
+    var entry: Provider.Entry
+    
+    @Environment(\.widgetFamily) var widgetFamily
+    
+    @Query var todayHeadaches: [Headache]
+    @Query var thisWeekHeadaches: [Headache]
+    
+    init(entry: Provider.Entry) {
+        self.entry = entry
+        
+        let startOfWeek = Date.now.startOfWeek
+        let startOfToday = Date.now.startOfDay
+        let today = Date.now
+        
+        _todayHeadaches = Query(filter: #Predicate {
+            $0.date >= startOfToday && $0.date < today
+        })
+        
+        _thisWeekHeadaches = Query(filter: #Predicate {
+            $0.date >= startOfWeek && $0.date < today
+        })
+    }
+    
+    var thisWeekHeadache: Int {
+        thisWeekHeadaches.count
+    }
+    var todayHeadache: Int {
+        todayHeadaches.count
+    }
+    
+    var body: some View {
+        switch widgetFamily {
+        case .accessoryCircular:
+            Button(intent: LogEntryIntent()) {
+                Image(systemName: "brain.filled.head.profile")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .imageScale(.large)
+            }
+        case .accessoryRectangular:
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("\(Image(systemName: "brain.filled.head.profile"))")
+                    Text("headaches")
+                }
+                .font(.headline)
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("today")
+                            .font(.headline)
+                        Text("this week")
+                            .font(.headline)
+                    }
+                    VStack(alignment: .leading) {
+                        Text("\(todayHeadache)")
+                            .font(.headline)
+                        Text("\(thisWeekHeadache)")
+                            .font(.headline)
+                    }
+                }
+                .foregroundStyle(.secondary)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        case .accessoryInline:
+            Button(intent: LogEntryIntent()) {
+                Label("\(todayHeadache)", systemImage: "brain.filled.head.profile")
+                    .frame(maxWidth: .infinity)
+            }
+        case .systemSmall:
+            VStack {
+                Spacer()
+                
+                Text("\(todayHeadache)")
+                    .font(.system(size: 48, weight: .bold))
+                
+                Text("today")
+                    .font(.system(size: 18))
+                
+                Spacer()
+                
+                Button(intent: LogEntryIntent()) {
+                    Label("log", systemImage: "brain.filled.head.profile")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.borderedProminent)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        case .systemMedium:
+            VStack {
+                HStack {
+                    VStack {
+                        Spacer()
+                        
+                        Text("\(todayHeadache)")
+                            .font(.system(size: 48, weight: .bold))
+                        
+                        Text("today")
+                            .font(.system(size: 18))
+                        
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    
+                    Divider()
+                    
+                    VStack {
+                        Spacer()
+                        
+                        Text("\(thisWeekHeadache)")
+                            .font(.system(size: 48, weight: .bold))
+                        
+                        Text("this week")
+                            .font(.system(size: 18))
+                        
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
+                
+                Button(intent: LogEntryIntent()) {
+                    Label("log", systemImage: "brain.filled.head.profile")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.borderedProminent)
+            }
+        default: EmptyView()
+        }
+    }
+}
+
+struct EntryRecording: Widget {
+    let kind: String = "EntryRecording"
+
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind,
+                            provider: Provider()) { entry in
+            EntryRecordingEntryView(entry: entry)
+                .containerBackground(for: .widget) {
+                    LinearGradient(colors: [.clear, .red.opacity(0.3)], startPoint: .top, endPoint: .bottom)
+                }
+                .tint(.red)
+                .widgetURL(URL(string: "myheadhurts://now")!)
+                .modelContainer(for: Headache.self)
+        }
+        .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular, .accessoryInline, .accessoryRectangular])
+        .configurationDisplayName("Record Entry")
+        .description("Record new headache entries and view statistics.")
+    }
+}
+
+#Preview(as: .systemMedium) {
+    EntryRecording()
+} timeline: {
+    SimpleEntry(date: .now)
+}

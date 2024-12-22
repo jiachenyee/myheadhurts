@@ -37,6 +37,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		32AC63942D17E52D00ECFD8C /* EntryRecordingExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EntryRecordingExtension.entitlements; sourceTree = "<group>"; };
 		32FB86902D12755800A624DE /* myheadhurts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myheadhurts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32FB86C82D15C46F00A624DE /* EntryRecordingExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EntryRecordingExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		32FB86CA2D15C46F00A624DE /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -70,6 +71,7 @@
 			membershipExceptions = (
 				"Data & State/Headache.swift",
 				"Data & State/ViewModel.swift",
+				"Helpers/Date+Helpers.swift",
 			);
 			target = 32FB86C72D15C46F00A624DE /* EntryRecordingExtension */;
 		};
@@ -119,6 +121,7 @@
 		32FB86872D12755800A624DE = {
 			isa = PBXGroup;
 			children = (
+				32AC63942D17E52D00ECFD8C /* EntryRecordingExtension.entitlements */,
 				32FB86922D12755800A624DE /* myheadhurts */,
 				32FB86CE2D15C46F00A624DE /* EntryRecording */,
 				32FB86C92D15C46F00A624DE /* Frameworks */,
@@ -464,6 +467,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = EntryRecordingExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9W63WN9LG4;
@@ -491,6 +495,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = EntryRecordingExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9W63WN9LG4;
