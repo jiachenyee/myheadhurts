@@ -13,10 +13,10 @@ pardon the poor code quality, im literally writing this app with a headache
 - [x] data vis
   - [x] maybe a cool headache heatmap like github, that sounds like a headache to implement
   - [x] trends, like oh no more severe headaches this wk than last
-- [ ] usability improvements
+- [x] usability improvements
   - [x] support for control center action to quickly headache
   - [x] support for siri shortcuts so you can use the action button to log headache
-  - [ ] support for widgets - maybe it can display the home screen stats
+  - [x] support for widgets - maybe it can display the home screen stats
 - [x] iCloud syncing
 
 i want to sleep
