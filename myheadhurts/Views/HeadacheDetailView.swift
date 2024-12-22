@@ -24,6 +24,8 @@ struct HeadacheDetailView: View {
     @State private var dizziness: Bool = false
     @State private var collapsed: Bool = false
     
+    @State private var isDeleteConfirmationPresented = false
+    
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     
@@ -88,6 +90,16 @@ struct HeadacheDetailView: View {
                     }
                 }
             }
+            
+            if let headache {
+                Section {
+                    Button(role: .destructive) {
+                        isDeleteConfirmationPresented = true
+                    } label: {
+                        Label("Delete", systemImage: "trash")
+                    }
+                }
+            }
         }
         .navigationTitle("\(headache?.date.titleFormat ?? "new") episode")
         .onAppear {
@@ -96,6 +108,24 @@ struct HeadacheDetailView: View {
         .onDisappear {
             saveChanges()
         }
+        .alert("delete this entry?", isPresented: $isDeleteConfirmationPresented) {
+            Button("delete", role: .destructive) {
+                dismiss()
+                
+                withAnimation {
+                    modelContext.delete(headache!)
+                }
+                
+                Task {
+                    await viewModel.deleteOldHealthKitRecord(for: headache!)
+                }
+            }
+            
+            Button("cancel", role: .cancel) {}
+        } message: {
+            Text("are you sure you want to delete this entry? this action cannot be undone.")
+        }
+
     }
     
     func discardChanges() {

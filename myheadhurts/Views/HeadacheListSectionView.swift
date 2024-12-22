@@ -10,6 +10,8 @@ import SwiftData
 
 struct HeadacheListSectionView: View {
     
+    @EnvironmentObject var viewModel: ViewModel
+    
     @Query(sort: \Headache.date, order: .reverse) var headaches: [Headache]
     
     @Namespace private var namespace
@@ -72,11 +74,16 @@ struct HeadacheListSectionView: View {
                     .shadow(color: .black.opacity(0.1), radius: 8)
                     .contextMenu {
                         Button(role: .destructive) {
-                            modelContext.delete(headache)
+                            withAnimation {
+                                modelContext.delete(headache)
+                            }
+                            
+                            Task {
+                                await viewModel.deleteOldHealthKitRecord(for: headache)
+                            }
                         } label: {
                             Label("Delete", systemImage: "trash")
                         }
-
                     }
                 }
             }

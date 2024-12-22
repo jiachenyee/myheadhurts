@@ -38,6 +38,11 @@ extension ViewModel {
     }
     
     func updateHealthKitRecord(for headache: Headache) async {
+        await deleteOldHealthKitRecord(for: headache)
+        await createNewHealthKitRecord(for: headache)
+    }
+    
+    func deleteOldHealthKitRecord(for headache: Headache) async {
         let oldRecords = [
             await retrieveRecord(for: .headache, from: headache.date),
             await retrieveRecord(for: .nausea, from: headache.date),
@@ -46,9 +51,7 @@ extension ViewModel {
             await retrieveRecord(for: .fainting, from: headache.date),
         ].compactMap(\.self)
         
-        try! await healthStore.delete(oldRecords)
-        
-        await createNewHealthKitRecord(for: headache)
+        try? await healthStore.delete(oldRecords)
     }
     
     fileprivate func headacheRecord(for headache: Headache) -> HKCategorySample {
