@@ -24,11 +24,6 @@ struct HeadacheListView: View {
                 HeadacheListSectionView(startOfDay: date)
                     .padding(.top, 16)
             }
-//            .onDelete { indexSet in
-//                for index in indexSet {
-//                    modelContext.delete(headaches[index])
-//                }
-//            }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal)

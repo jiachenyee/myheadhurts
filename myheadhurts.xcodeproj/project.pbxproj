@@ -68,8 +68,8 @@
 		32FB86F72D16A50700A624DE /* Exceptions for "myheadhurts" folder in "EntryRecordingExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Headache.swift,
-				ViewModel.swift,
+				"Data & State/Headache.swift",
+				"Data & State/ViewModel.swift",
 			);
 			target = 32FB86C72D15C46F00A624DE /* EntryRecordingExtension */;
 		};
