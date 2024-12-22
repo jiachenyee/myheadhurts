@@ -91,7 +91,7 @@ struct HeadacheDetailView: View {
                 }
             }
             
-            if let headache {
+            if headache != nil {
                 Section {
                     Button(role: .destructive) {
                         isDeleteConfirmationPresented = true
@@ -180,8 +180,10 @@ struct HeadacheDetailView: View {
     }
 }
 
+#if DEBUG
 #Preview {
     NavigationStack {
         HeadacheDetailView(headache: .example)
     }
 }
+#endif
