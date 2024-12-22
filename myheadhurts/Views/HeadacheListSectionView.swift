@@ -29,7 +29,7 @@ struct HeadacheListSectionView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(startOfDay.formattedDateOnly.lowercased())
+            Text(startOfDay.titleFormat)
                 .font(.title2)
                 .fontWeight(.bold)
             

@@ -27,10 +27,27 @@ struct HeadacheDetailView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     
+    var wasHeadacheUpdated: Bool {
+        if let headache {
+            return date != headache.date ||
+            severity != headache.severity ||
+            notes != headache.notes ||
+            nausea != headache.nausea ||
+            vomiting != headache.vomiting ||
+            lightheadedness != headache.lightheadedness ||
+            dizziness != headache.dizziness ||
+            collapsed != headache.collapsed
+        } else {
+            return false
+        }
+    }
+    
     var body: some View {
         Form {
             Section {
-                DatePicker("when", selection: $date, in: ...Date.now)
+                LabeledContent("when") {
+                    Text(date.formatted(date: .abbreviated, time: .standard))
+                }
                 
                 Picker("severity", selection: $severity) {
                     ForEach(Headache.HeadacheSeverity.allCases, id: \.self) { severity in
@@ -56,15 +73,7 @@ struct HeadacheDetailView: View {
             }
             
             Section {
-                if let headache,
-                   date != headache.date ||
-                    severity != headache.severity ||
-                    notes != headache.notes ||
-                    nausea != headache.nausea ||
-                    vomiting != headache.vomiting ||
-                    lightheadedness != headache.lightheadedness ||
-                    dizziness != headache.dizziness ||
-                    collapsed != headache.collapsed {
+                if wasHeadacheUpdated {
                     Button("discard changes", systemImage: "trash", role: .destructive) {
                         discardChanges()
                     }
@@ -103,14 +112,20 @@ struct HeadacheDetailView: View {
     func saveChanges() {
         guard let headache = headache else { return }
         
-        headache.date = date
-        headache.severity = severity
-        headache.notes = notes
-        headache.nausea = nausea
-        headache.vomiting = vomiting
-        headache.lightheadedness = lightheadedness
-        headache.dizziness = dizziness
-        headache.collapsed = collapsed
+        if wasHeadacheUpdated {
+            headache.date = date
+            headache.severity = severity
+            headache.notes = notes
+            headache.nausea = nausea
+            headache.vomiting = vomiting
+            headache.lightheadedness = lightheadedness
+            headache.dizziness = dizziness
+            headache.collapsed = collapsed
+            
+            Task {
+                await viewModel.updateHealthKitRecord(for: headache)
+            }
+        }
     }
     
     func createHeadache() {
@@ -138,16 +153,5 @@ struct HeadacheDetailView: View {
 #Preview {
     NavigationStack {
         HeadacheDetailView(headache: .example)
-    }
-}
-
-extension Date {
-    var titleFormat: String {
-        let formatter = DateFormatter()
-        
-        // e.g. 1 Nov
-        formatter.dateFormat = "dd MMM"
-        
-        return formatter.string(from: self).lowercased()
     }
 }

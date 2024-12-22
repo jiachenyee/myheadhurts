@@ -20,10 +20,11 @@ extension Date {
         Calendar.current.component(.weekday, from: self) - 1
     }
     
-    var formattedDateOnly: String {
+    var titleFormat: String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d"
         
-        return formatter.string(from: self)
+        formatter.dateFormat = "d MMM"
+        
+        return formatter.string(from: self).lowercased()
     }
 }

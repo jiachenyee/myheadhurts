@@ -37,6 +37,20 @@ extension ViewModel {
         try? await healthStore.save(records)
     }
     
+    func updateHealthKitRecord(for headache: Headache) async {
+        let oldRecords = [
+            await retrieveRecord(for: .headache, from: headache.date),
+            await retrieveRecord(for: .nausea, from: headache.date),
+            await retrieveRecord(for: .vomiting, from: headache.date),
+            await retrieveRecord(for: .dizziness, from: headache.date),
+            await retrieveRecord(for: .fainting, from: headache.date),
+        ].compactMap(\.self)
+        
+        try! await healthStore.delete(oldRecords)
+        
+        await createNewHealthKitRecord(for: headache)
+    }
+    
     fileprivate func headacheRecord(for headache: Headache) -> HKCategorySample {
         let categoryType = HKObjectType.categoryType(forIdentifier: .headache)!
         
@@ -89,5 +103,10 @@ extension ViewModel {
         headache.faintingHealthKitId = sample.uuid
         
         return sample
+    }
+    
+    fileprivate func retrieveRecord(for categoryType: HKCategoryTypeIdentifier, from date: Date) async -> HKSample? {
+        try! await healthStore.executeQuery(for: HKObjectType.categoryType(forIdentifier: categoryType)!,
+                                            from: date.addingTimeInterval(-1), to: date.addingTimeInterval(1)).first
     }
 }
