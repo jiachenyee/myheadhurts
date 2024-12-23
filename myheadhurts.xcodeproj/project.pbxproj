@@ -385,7 +385,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "myheadhurtswatch-Watch-App-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = myheadhurtswatch;
+				INFOPLIST_KEY_CFBundleDisplayName = myheadhurts;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Store headache, nausea, vomiting, light-headedness, dizziness, and collapsed information";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Store headache, nausea, vomiting, light-headedness, dizziness, and collapsed information";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -419,7 +419,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "myheadhurtswatch-Watch-App-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = myheadhurtswatch;
+				INFOPLIST_KEY_CFBundleDisplayName = myheadhurts;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Store headache, nausea, vomiting, light-headedness, dizziness, and collapsed information";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Store headache, nausea, vomiting, light-headedness, dizziness, and collapsed information";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
