@@ -6,14 +6,20 @@
 //
 
 import SwiftUI
-import SwiftData
+import WidgetKit
 
 @main
 struct myheadhurtsApp: App {
+    
+    @Environment(\.scenePhase) var scenePhase
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
         .modelContainer(for: Headache.self)
+        .onChange(of: scenePhase) { oldValue, newValue in
+            WidgetCenter.shared.reloadAllTimelines()
+        }
     }
 }
