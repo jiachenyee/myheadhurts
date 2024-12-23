@@ -19,6 +19,17 @@ struct HeadacheListView: View {
     }
     
     var body: some View {
+        #if os(watchOS)
+        List {
+            ForEach(dates, id: \.self) { date in
+                Section(date.titleFormat) {
+                    HeadacheListSectionView(startOfDay: date)
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal)
+        #else
         VStack(alignment: .leading) {
             ForEach(dates, id: \.self) { date in
                 HeadacheListSectionView(startOfDay: date)
@@ -27,6 +38,7 @@ struct HeadacheListView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal)
+        #endif
     }
     
     func getAllDates() -> [Date] {

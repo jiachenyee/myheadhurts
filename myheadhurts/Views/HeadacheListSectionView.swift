@@ -10,7 +10,9 @@ import SwiftData
 
 struct HeadacheListSectionView: View {
     
+#if os(iOS)
     @EnvironmentObject var viewModel: ViewModel
+#endif
     
     @Query(sort: \Headache.date, order: .reverse) var headaches: [Headache]
     
@@ -30,13 +32,32 @@ struct HeadacheListSectionView: View {
     }
     
     var body: some View {
+#if os(watchOS)
+        ForEach(headaches) { headache in
+            NavigationLink {
+                WatchHeadacheDetailView(headache: headache)
+            } label: {
+                HStack {
+                    Text(headache.date.formatted(date: .omitted, time: .shortened).lowercased())
+                        .fontWeight(.bold)
+                    
+                    Spacer()
+                    
+                    Text(headache.severity.rawValue)
+                        .foregroundStyle(Color.accentColor)
+                }
+            }
+        }
+#else
         VStack(alignment: .leading) {
             Text(startOfDay.titleFormat)
                 .font(.title2)
                 .fontWeight(.bold)
             
             ForEach(headaches) { headache in
-                NavigationLink(destination: HeadacheDetailView(headache: headache)) {
+                NavigationLink {
+                    HeadacheDetailView(headache: headache)
+                } label: {
                     VStack(alignment: .leading) {
                         HStack {
                             Text(headache.date.formatted(date: .omitted, time: .shortened).lowercased())
@@ -88,5 +109,6 @@ struct HeadacheListSectionView: View {
                 }
             }
         }
+#endif
     }
 }

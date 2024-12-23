@@ -47,8 +47,12 @@ struct HeadacheDetailView: View {
     var body: some View {
         Form {
             Section {
-                LabeledContent("when") {
-                    Text(date.formatted(date: .abbreviated, time: .standard))
+                if headache != nil {
+                    LabeledContent("when") {
+                        Text(date.formatted(date: .abbreviated, time: .standard))
+                    }
+                } else {
+                    DatePicker("when", selection: $date, in: ...Date.now)
                 }
                 
                 Picker("severity", selection: $severity) {

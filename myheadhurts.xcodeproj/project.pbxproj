@@ -7,12 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32AC64082D19803900ECFD8C /* myheadhurtswatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 32AC63FA2D19803800ECFD8C /* myheadhurtswatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		32FB86CB2D15C46F00A624DE /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32FB86CA2D15C46F00A624DE /* WidgetKit.framework */; };
 		32FB86CD2D15C46F00A624DE /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32FB86CC2D15C46F00A624DE /* SwiftUI.framework */; };
 		32FB86DC2D15C47100A624DE /* EntryRecordingExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 32FB86C82D15C46F00A624DE /* EntryRecordingExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		32AC64052D19803900ECFD8C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 32FB86882D12755800A624DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 32AC63F92D19803800ECFD8C;
+			remoteInfo = "myheadhurtswatch Watch App";
+		};
 		32FB86DA2D15C47100A624DE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 32FB86882D12755800A624DE /* Project object */;
@@ -23,6 +31,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		32AC64072D19803900ECFD8C /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				32AC64082D19803900ECFD8C /* myheadhurtswatch Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		32FB86E12D15C47100A624DE /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -38,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		32AC63942D17E52D00ECFD8C /* EntryRecordingExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EntryRecordingExtension.entitlements; sourceTree = "<group>"; };
+		32AC63FA2D19803800ECFD8C /* myheadhurtswatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "myheadhurtswatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32FB86902D12755800A624DE /* myheadhurts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myheadhurts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32FB86C82D15C46F00A624DE /* EntryRecordingExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EntryRecordingExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		32FB86CA2D15C46F00A624DE /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -45,6 +65,19 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		32AC640D2D19807C00ECFD8C /* Exceptions for "myheadhurts" folder in "myheadhurtswatch Watch App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Data & State/Headache.swift",
+				"Data & State/ViewModel.swift",
+				"Data & State/ViewModel+HealthKit.swift",
+				"Helpers/Date+Helpers.swift",
+				"Helpers/HealthKit+Helpers.swift",
+				Views/HeadacheListSectionView.swift,
+				Views/HeadacheListView.swift,
+			);
+			target = 32AC63F92D19803800ECFD8C /* myheadhurtswatch Watch App */;
+		};
 		32FB86DD2D15C47100A624DE /* Exceptions for "EntryRecording" folder in "EntryRecordingExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -78,11 +111,17 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		32AC63FB2D19803800ECFD8C /* myheadhurtswatch Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "myheadhurtswatch Watch App";
+			sourceTree = "<group>";
+		};
 		32FB86922D12755800A624DE /* myheadhurts */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				32FB86E72D15CAAF00A624DE /* Exceptions for "myheadhurts" folder in "myheadhurts" target */,
 				32FB86F72D16A50700A624DE /* Exceptions for "myheadhurts" folder in "EntryRecordingExtension" target */,
+				32AC640D2D19807C00ECFD8C /* Exceptions for "myheadhurts" folder in "myheadhurtswatch Watch App" target */,
 			);
 			path = myheadhurts;
 			sourceTree = "<group>";
@@ -99,6 +138,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		32AC63F72D19803800ECFD8C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		32FB868D2D12755800A624DE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,6 +170,7 @@
 				32AC63942D17E52D00ECFD8C /* EntryRecordingExtension.entitlements */,
 				32FB86922D12755800A624DE /* myheadhurts */,
 				32FB86CE2D15C46F00A624DE /* EntryRecording */,
+				32AC63FB2D19803800ECFD8C /* myheadhurtswatch Watch App */,
 				32FB86C92D15C46F00A624DE /* Frameworks */,
 				32FB86912D12755800A624DE /* Products */,
 			);
@@ -134,6 +181,7 @@
 			children = (
 				32FB86902D12755800A624DE /* myheadhurts.app */,
 				32FB86C82D15C46F00A624DE /* EntryRecordingExtension.appex */,
+				32AC63FA2D19803800ECFD8C /* myheadhurtswatch Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -150,6 +198,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		32AC63F92D19803800ECFD8C /* myheadhurtswatch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32AC640B2D19803900ECFD8C /* Build configuration list for PBXNativeTarget "myheadhurtswatch Watch App" */;
+			buildPhases = (
+				32AC63F62D19803800ECFD8C /* Sources */,
+				32AC63F72D19803800ECFD8C /* Frameworks */,
+				32AC63F82D19803800ECFD8C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				32AC63FB2D19803800ECFD8C /* myheadhurtswatch Watch App */,
+			);
+			name = "myheadhurtswatch Watch App";
+			packageProductDependencies = (
+			);
+			productName = "myheadhurtswatch Watch App";
+			productReference = 32AC63FA2D19803800ECFD8C /* myheadhurtswatch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
 		32FB868F2D12755800A624DE /* myheadhurts */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 32FB869E2D12755A00A624DE /* Build configuration list for PBXNativeTarget "myheadhurts" */;
@@ -158,11 +228,13 @@
 				32FB868D2D12755800A624DE /* Frameworks */,
 				32FB868E2D12755800A624DE /* Resources */,
 				32FB86E12D15C47100A624DE /* Embed Foundation Extensions */,
+				32AC64072D19803900ECFD8C /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				32FB86DB2D15C47100A624DE /* PBXTargetDependency */,
+				32AC64062D19803900ECFD8C /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				32FB86922D12755800A624DE /* myheadhurts */,
@@ -206,6 +278,9 @@
 				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
+					32AC63F92D19803800ECFD8C = {
+						CreatedOnToolsVersion = 16.1;
+					};
 					32FB868F2D12755800A624DE = {
 						CreatedOnToolsVersion = 16.1;
 					};
@@ -230,11 +305,19 @@
 			targets = (
 				32FB868F2D12755800A624DE /* myheadhurts */,
 				32FB86C72D15C46F00A624DE /* EntryRecordingExtension */,
+				32AC63F92D19803800ECFD8C /* myheadhurtswatch Watch App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		32AC63F82D19803800ECFD8C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		32FB868E2D12755800A624DE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -252,6 +335,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		32AC63F62D19803800ECFD8C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		32FB868C2D12755800A624DE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -269,6 +359,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		32AC64062D19803900ECFD8C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 32AC63F92D19803800ECFD8C /* myheadhurtswatch Watch App */;
+			targetProxy = 32AC64052D19803900ECFD8C /* PBXContainerItemProxy */;
+		};
 		32FB86DB2D15C47100A624DE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 32FB86C72D15C46F00A624DE /* EntryRecordingExtension */;
@@ -277,6 +372,74 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		32AC64092D19803900ECFD8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "myheadhurtswatch Watch App/myheadhurtswatch Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_ASSET_PATHS = "\"myheadhurtswatch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 9W63WN9LG4;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "myheadhurtswatch-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = myheadhurtswatch;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Store headache, nausea, vomiting, light-headedness, dizziness, and collapsed information";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Store headache, nausea, vomiting, light-headedness, dizziness, and collapsed information";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = app.jiachen.myheadhurts;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.jiachen.myheadhurts.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		32AC640A2D19803900ECFD8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "myheadhurtswatch Watch App/myheadhurtswatch Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_ASSET_PATHS = "\"myheadhurtswatch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 9W63WN9LG4;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "myheadhurtswatch-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = myheadhurtswatch;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Store headache, nausea, vomiting, light-headedness, dizziness, and collapsed information";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Store headache, nausea, vomiting, light-headedness, dizziness, and collapsed information";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = app.jiachen.myheadhurts;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.jiachen.myheadhurts.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Release;
+		};
 		32FB869C2D12755A00A624DE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -403,7 +566,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = myheadhurts/myheadhurts.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"myheadhurts/Preview Content\"";
 				DEVELOPMENT_TEAM = 9W63WN9LG4;
 				ENABLE_PREVIEWS = YES;
@@ -437,7 +600,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = myheadhurts/myheadhurts.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"myheadhurts/Preview Content\"";
 				DEVELOPMENT_TEAM = 9W63WN9LG4;
 				ENABLE_PREVIEWS = YES;
@@ -471,7 +634,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = EntryRecordingExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 9W63WN9LG4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EntryRecording/Info.plist;
@@ -502,7 +665,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = EntryRecordingExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 9W63WN9LG4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EntryRecording/Info.plist;
@@ -529,6 +692,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		32AC640B2D19803900ECFD8C /* Build configuration list for PBXNativeTarget "myheadhurtswatch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32AC64092D19803900ECFD8C /* Debug */,
+				32AC640A2D19803900ECFD8C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		32FB868B2D12755800A624DE /* Build configuration list for PBXProject "myheadhurts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
