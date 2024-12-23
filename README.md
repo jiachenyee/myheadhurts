@@ -7,9 +7,9 @@ pardon the poor code quality, im literally writing this app with a headache
 - [x] log headache episodes
 - [x] show statistics for number of reports
 - [x] crud haedache episodes
-- [ ] healthkit symptom tracking integation
+- [x] healthkit symptom tracking integation
   - [x] entries from the app will be reflected in the health app
-  - [ ] edits from the app get updated in the health app
+  - [x] edits from the app get updated in the health app
 - [x] data vis
   - [x] maybe a cool headache heatmap like github, that sounds like a headache to implement
   - [x] trends, like oh no more severe headaches this wk than last
