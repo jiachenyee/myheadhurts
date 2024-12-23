@@ -56,7 +56,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		32AC63942D17E52D00ECFD8C /* EntryRecordingExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EntryRecordingExtension.entitlements; sourceTree = "<group>"; };
 		32AC63FA2D19803800ECFD8C /* myheadhurtswatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "myheadhurtswatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32FB86902D12755800A624DE /* myheadhurts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myheadhurts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32FB86C82D15C46F00A624DE /* EntryRecordingExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EntryRecordingExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +74,13 @@
 				"Helpers/HealthKit+Helpers.swift",
 				Views/HeadacheListSectionView.swift,
 				Views/HeadacheListView.swift,
+			);
+			target = 32AC63F92D19803800ECFD8C /* myheadhurtswatch Watch App */;
+		};
+		32AC64202D19C4C000ECFD8C /* Exceptions for "myheadhurtswatch Watch App" folder in "myheadhurtswatch Watch App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"myheadhurtswatch-Watch-App-Info.plist",
 			);
 			target = 32AC63F92D19803800ECFD8C /* myheadhurtswatch Watch App */;
 		};
@@ -113,6 +119,9 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		32AC63FB2D19803800ECFD8C /* myheadhurtswatch Watch App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				32AC64202D19C4C000ECFD8C /* Exceptions for "myheadhurtswatch Watch App" folder in "myheadhurtswatch Watch App" target */,
+			);
 			path = "myheadhurtswatch Watch App";
 			sourceTree = "<group>";
 		};
@@ -167,7 +176,6 @@
 		32FB86872D12755800A624DE = {
 			isa = PBXGroup;
 			children = (
-				32AC63942D17E52D00ECFD8C /* EntryRecordingExtension.entitlements */,
 				32FB86922D12755800A624DE /* myheadhurts */,
 				32FB86CE2D15C46F00A624DE /* EntryRecording */,
 				32AC63FB2D19803800ECFD8C /* myheadhurtswatch Watch App */,
@@ -384,7 +392,7 @@
 				DEVELOPMENT_TEAM = 9W63WN9LG4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "myheadhurtswatch-Watch-App-Info.plist";
+				INFOPLIST_FILE = "myheadhurtswatch Watch App/myheadhurtswatch-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = myheadhurts;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Store headache, nausea, vomiting, light-headedness, dizziness, and collapsed information";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Store headache, nausea, vomiting, light-headedness, dizziness, and collapsed information";
@@ -418,7 +426,7 @@
 				DEVELOPMENT_TEAM = 9W63WN9LG4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "myheadhurtswatch-Watch-App-Info.plist";
+				INFOPLIST_FILE = "myheadhurtswatch Watch App/myheadhurtswatch-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = myheadhurts;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Store headache, nausea, vomiting, light-headedness, dizziness, and collapsed information";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Store headache, nausea, vomiting, light-headedness, dizziness, and collapsed information";
@@ -636,7 +644,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = EntryRecordingExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = EntryRecording/EntryRecordingExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 9W63WN9LG4;
@@ -667,7 +675,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = EntryRecordingExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = EntryRecording/EntryRecordingExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 9W63WN9LG4;
