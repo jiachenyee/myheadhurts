@@ -3,15 +3,14 @@ my neurologist told me to create a headache journal, not sure if this is what sh
 
 ## screenshots
 ### iOS
-![screenshot 1](assets/ios/1.png)
-![screenshot 2](assets/ios/2.png)
-![screenshot 3](assets/ios/3.png)
-![screenshot 4](assets/ios/4.png)
+|   |   |   |   |
+|---|---|---|---|
+| ![screenshot 1](assets/ios/1.png) | ![screenshot 2](assets/ios/2.png) | ![screenshot 3](assets/ios/3.png) | ![screenshot 4](assets/ios/4.png) |
 
 ### watchOS
-![screenshot 1](assets/watch/1.png)
-![screenshot 2](assets/watch/2.png)
-![screenshot 3](assets/watch/3.png)
+|   |   |   |
+|---|---|---|
+| ![screenshot 1](assets/watch/1.png) | ![screenshot 2](assets/watch/2.png) | ![screenshot 3](assets/watch/3.png) |
 
 ## features
 ### log symptoms
@@ -31,4 +30,5 @@ my neurologist told me to create a headache journal, not sure if this is what sh
 - we don't have access to any of your data
 
 ### open source
-- license: MIT license
+- license: [MIT license](LICENSE)
+- feel free to submit [issues](https://github.com/jiachenyee/myheadhurts/issues) if you find any bugs, issues, or have any feature requests
